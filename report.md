@@ -39,7 +39,7 @@ In order to draw a single line on the left and right lanes, I modified the draw_
 
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
-![proposed best fit lines][hough_lines]
+![proposed best fit lines][best_fit_lines_demo.jpg]
 
 
 ### 2. Identify potential shortcomings with your current pipeline
