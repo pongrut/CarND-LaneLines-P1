@@ -43,18 +43,10 @@ Figure 1. The green lines the result of hough lines, the red lines are best-fit 
 
 ### 2. Identify potential shortcomings with your current pipeline
 
+One potential shortcoming would be what would happen when lighting condition has a huge changed, e.g., brightness, contrast, lighting color. These conditions changed will result in lanes finding because of color values and all the parameters that are hardcoded to work with particular lighting condition only. Another shortcoming could be the shadow of the object lying on the road surface or Bike Lane on the roadside. Even the sharp bend road can result in finding the lane lines.
 
-One potential shortcoming would be what would happen when ... 
-- Lighting condition e.g. brightness, contrast, lighting color
-- Sharp bend
-- Crossroads
-- Bike Lane
-
-Another shortcoming could be ... 
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+A possible improvement would be to find the best-fit lines from the challenge.mp4 video. The problem can see at the edge of the road; there are a barrier and its shadow on the way. The left hough lines output can group into three groups, the first group is a barrier, and a second group is a group of shadows, and the third group is the lane. To improve this program for more robust by eliminating non-lane line group. Elimination can be done by converting these lines back into the parameter space and using the K Nearest Neighbor to cluster the lines. Find the best fit line of each group, then propose the best fit line of each group. Calculate the intersection point between the proposed best fit line of the right and left sides and choose the intersection point that closest to the middle of the image for final best fit lines. Another potential improvement could be to use Convolutional Neural Network (CNN) for lane detection. The task is to train CNN Model to recognize road lanes, which will be more flexible in different environments than using image processing in current algorithm.
