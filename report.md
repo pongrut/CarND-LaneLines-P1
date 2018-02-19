@@ -35,11 +35,12 @@ My pipeline consisted of 9 steps. First, I enhanced the images by fading its col
 8. draw_lines: Finds the left and right representative lines.
 9. draw_poly: Fills color into road space.
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by calling best_2_lines() to get left and right line. The best_2_lines() function take 2 arguments first image itself and lines from hough_lines function, all potential horizontal lines are filter out and the rest are separate into to group. The right lines are line that has positive slope (slope greater than zero) and another group are left lines, then create representative lines of each group by using a one dimensional polynomial to find x1, x2 with define y_min (y right under middle of the image) and y_max (height of the image).
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by calling best_2_lines() to get left and right line. The best_2_lines() function take 2 arguments first image itself and lines from hough_lines function, all potential horizontal lines are filter out and the rest are separate into to group. The right lines are line that has positive slope (slope greater than zero) and another group are left lines, then create representative lines of each group by using a one dimensional polynomial to find x1, x2 with define y_min (y right under middle of the image) and y_max (height of the image). (Fig.1) demonstrate of draw_lines function, the result of single line on the left and right lanes.
 
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
-![proposed best fit lines][best_fit_lines_demo.jpg]
+![proposed best fit lines](best_fit_lines_demo.jpg)
+Figure 1. The green lines shows result of hough lines, the red lines are best fit lines for both left and right lanes.
 
 
 ### 2. Identify potential shortcomings with your current pipeline
