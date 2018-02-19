@@ -26,8 +26,8 @@ My pipeline consisted of 9 steps. First, I enhanced the images by fading its col
 
 #### Pipeline Steps Summary.
 1. image_enhance: Enhances images by using PIL.ImageEnhance to modify color and contrast.
-2. color_selection: Filters images by colors within the specified boundaries.
-3. region_of_interest: Only keeps the region of the image defined by the polygon formed from `vertices`.
+2. color_selection: Filters images with colors within the specified boundaries.
+3. region_of_interest: Only keeps the region of the image defined by the polygon formed from vertices.
 4. grayscale: Applies the Grayscale transform, this will return an image with only one color channel
 5. gaussian_blur: Applies a Gaussian Noise kernel to blur images.
 6. canny: Uses Canny Edge detection to detect edges.
@@ -35,12 +35,10 @@ My pipeline consisted of 9 steps. First, I enhanced the images by fading its col
 8. draw_lines: Finds the left and right representative lines.
 9. draw_poly: Fills color into road space.
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by calling best_2_lines() to get left and right line. The best_2_lines() function take 2 arguments first image itself and lines from hough_lines function, all potential horizontal lines are filter out and the rest are separate into to group. The right lines are line that has positive slope (slope greater than zero) and another group are left lines, then create representative lines of each group by using a one dimensional polynomial to find x1, x2 with define y_min (y right under middle of the image) and y_max (height of the image). (Fig.1) demonstrate of draw_lines function, the result of single line on the left and right lanes.
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by calling best_2_lines() to get left and right line. The best_2_lines() function take two arguments first image itself and lines from a hough_lines function, all potential horizontal lines are filtered out, and the rest are separate into to group. The right lines are a line that has a positive slope (slope greater than zero), and another group is left lines. After that create representative lines of each group by using a one-dimensional polynomial to find x1, x2 with define y_min (y right under the middle of the image) and y_max (height of the picture). (Fig.1) demonstrate of draw_lines function, the result of a single line on the left and right lanes
 
 ![proposed best fit lines](best_fit_lines_demo.jpg)
-Figure 1. The green lines shows result of hough lines, the red lines are best fit lines for both left and right lanes.
+Figure 1. The green lines the result of hough lines, the red lines are best-fit lines for both left and right lanes.
 
 
 ### 2. Identify potential shortcomings with your current pipeline
